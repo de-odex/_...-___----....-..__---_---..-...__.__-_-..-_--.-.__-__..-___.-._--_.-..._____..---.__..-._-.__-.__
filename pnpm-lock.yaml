@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      waforth:
+        specifier: ^0.20.1
+        version: 0.20.1
     devDependencies:
       '@eslint/compat':
         specifier: ^1.2.5
@@ -1381,6 +1385,10 @@ packages:
       vite:
         optional: true
 
+  waforth@0.20.1:
+    resolution: {integrity: sha512-0RDEqb+BdOmFUahTTD9MSkckR30fgJlQBMUOJeH6aX19f+byV0dyytJNsv0QzOpbGLh12mFL98voPTIzuMitMA==}
+    hasBin: true
+
   which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
     engines: {node: '>= 8'}
@@ -2500,6 +2508,8 @@ snapshots:
   vitefu@1.0.6(vite@6.3.3(jiti@2.4.2)(lightningcss@1.29.2)):
     optionalDependencies:
       vite: 6.3.3(jiti@2.4.2)(lightningcss@1.29.2)
+
+  waforth@0.20.1: {}
 
   which@2.0.2:
     dependencies:
