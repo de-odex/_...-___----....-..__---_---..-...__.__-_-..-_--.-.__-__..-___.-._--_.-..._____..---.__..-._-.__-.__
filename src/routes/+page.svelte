@@ -107,7 +107,7 @@
 
 	function add() {
 		if (todoInput.trim().length < 3) {
-			showAlert("That ain't it", 'Be serious. That task name too short.');
+			showAlert('此謬矣', '毋戲。此使令名太短也。');
 			playRandomSound();
 			return;
 		}
@@ -117,13 +117,13 @@
 		const newTask = {
 			idx: todos.length,
 			done: false,
-			text: isMystery ? '🎁 MYSTERY TASK UNLOCKED!' : todoInput,
-			desc: isMystery ? 'Click to reveal mystery task...' : randomLabel,
+			text: isMystery ? '🎁 玄使令開啟矣' : todoInput,
+			desc: isMystery ? '擊此以顯玄使令' : randomLabel,
 			mystery: isMystery
 		};
 		todos = [...todos, newTask];
 		if (!cursedTask) cursedTask = newTask;
-		showAlert('NEW TASK ADDED', 'Buddy is caught lacking. Lock the fuck in');
+		showAlert('新使令增矣', '友懈見擒，速攝心。');
 		playRandomSound();
 		showRandomImage();
 		todoInput = '';
@@ -134,7 +134,7 @@
 	}
 
 	function clear() {
-		showAlert('Why you so lazy buddy', 'You think it would be that easy?');
+		showAlert('胡爾何其懈？', '謂之易若斯乎？');
 		playRandomSound();
 	}
 
@@ -146,10 +146,10 @@
 			idx: todos.length,
 			done: false,
 			text: '🎲 ' + task,
-			desc: 'You rolled the dice. Now do it.'
+			desc: '厄骰既擲，行之勿怠。'
 		};
 		todos.push(newTask);
-		showAlert('DICE OF DOOM 🎲', 'A task has been summoned.');
+		showAlert('厄骰 🎲', '使令召至矣。');
 		playRandomSound();
 		showRandomImage();
 	}
@@ -218,7 +218,7 @@
 				? {
 						...t,
 						text: 玄使令錄[Math.floor(Math.random() * 玄使令錄.length)],
-						desc: 'This is your fate',
+						desc: '此即汝命。',
 						mystery: false
 					}
 				: t
@@ -228,14 +228,14 @@
 	}
 
 	function procrastinate() {
-		showAlert('Procrastination Time', 'Go take a nap. We’ll wait.');
+		showAlert('遷延之時', '且去小憩，吾輩俟汝。');
 		playRandomSound();
 	}
 
 	function resetInactivityTimer() {
 		clearTimeout(inactivityTimer);
 		inactivityTimer = setTimeout(function () {
-			showAlert('Still here?', "You ain't moved in 10 seconds. Lock in.");
+			showAlert('汝尚在乎？', '十息未動，速攝心。');
 			playRandomSound();
 		}, 10000);
 	}
@@ -256,7 +256,7 @@
 			var temp = Object.assign({}, cursedTask);
 			temp.idx = todos.length;
 			todos.push(temp);
-			showAlert('Nice try', "You can't delete this cursed task.");
+			showAlert('善謀哉', '此咒使令不可刪。');
 			playRandomSound();
 		}
 	});
@@ -287,7 +287,7 @@
 		class:bg-green-400={energyLevel > 60}
 		style="width: {energyLevel}%"
 	>
-		{energyLevel}% Energy
+		氣力猶存{energyLevel}%
 	</div>
 </div>
 
@@ -299,28 +299,28 @@
 	>
 		<input
 			class="flex-1 rounded-full border border-gray-400 bg-white px-4 py-2 font-semibold placeholder-gray-500 focus:outline-none"
-			placeholder="Buy milk..."
+			placeholder="讀所定篇"
 			bind:value={todoInput}
 			onkeydown={(e) => e.key === 'Enter' && add()}
 		/>
 		<div class="ml-4 flex space-x-2">
 			<button class="rounded-full bg-gray-800 px-3 py-1 text-white hover:bg-gray-900" onclick={add}>
-				Create Task
+				立任
 			</button>
 			<button class="rounded-full bg-red-600 px-3 py-1 text-white hover:bg-red-700" onclick={clear}>
-				Delete All Tasks
+				刪諸任
 			</button>
 			<button
 				class="rounded-full bg-yellow-500 px-3 py-1 text-white hover:bg-yellow-600"
 				onclick={procrastinate}
 			>
-				Procrastinate
+				遷延
 			</button>
 			<button
 				class="rounded-full bg-purple-700 px-3 py-1 text-white hover:bg-purple-800"
 				onclick={rollDoomDice}
 			>
-				Dice of Doom 🎲
+				擲厄骰 🎲
 			</button>
 		</div>
 	</div>
@@ -330,7 +330,7 @@
 <div class="mx-auto mt-20 flex max-w-6xl items-start gap-8 px-6 pt-24">
 	<!-- 📝 To-Do List -->
 	<section class="flex-1">
-		<p class="mb-2 text-lg font-semibold">To-Do List</p>
+		<p class="mb-2 text-lg font-semibold">未辦事目</p>
 		<ul class="space-y-2 text-sm">
 			{#each todos as t, i}
 				<li
