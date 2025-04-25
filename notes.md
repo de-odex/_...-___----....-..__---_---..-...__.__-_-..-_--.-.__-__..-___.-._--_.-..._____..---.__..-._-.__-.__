@@ -12,7 +12,7 @@ not necessarily how we did it
 - doomscrolling
 
 ## implementation
-- forth "backend"/core running in browser via webassembly
+- wenyan "backend"/core, using the browser implementation
 - svelte frontend cuz im an idiot
 - other webassembly stuff cuz why not
 
@@ -23,4 +23,6 @@ use this in the presentation
 - forth was an annoying language to learn; we almost chose brainfuck though so thank god we didn't
   - it took a lot of effort getting the forth code to work without using variables
   - AI gen does not help with esoteric or old languages like forth lol
-  - 
+- forth was getting difficult to do, so I pivoted to wenyan and entropy.js
+- Quoc implemented most of the frontend logic and the initial todo app logic, while I made the forth version of the backend
+- 
