@@ -11,7 +11,12 @@ const config = {
 			importPaths: [process.cwd() + "/藏書樓"]
 		})
 	],
-	kit: { adapter: adapter() }
+	kit: {
+		adapter: adapter(),
+		paths: {
+			base: process.env.NODE_ENV === 'production' ? '/_...-___----....-..__---_---..-...__.__-_-..-_--.-.__-__..-___.-._--_.-..._____..---.__..-._-.__-.__' : '',
+		}
+	}
 };
 
 export default config;
