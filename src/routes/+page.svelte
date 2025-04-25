@@ -97,6 +97,10 @@
 
 	// functions
 
+	function 定時限(函式, 遲延) {
+		setTimeout(函式, 遲延);
+	}
+
 	// show alert
 	function 顯警示(題名, 書文) {
 		// ^ title, message
@@ -104,7 +108,7 @@
 		const 辨號 = Date.now();
 		// ..., title, message
 		警示錄.push({ 辨號: 辨號, 題名: 題名, 書文: 書文 });
-		setTimeout(function () {
+		定時限(function () {
 			漸隱警示(辨號);
 		}, 5000);
 	}
@@ -202,7 +206,7 @@
 			if (攝機指) {
 				攝機指.srcObject = stream;
 
-				setTimeout(function () {
+				定時限(function () {
 					顯攝機 = false;
 					stream.getTracks().forEach(function (t) {
 						t.stop();
@@ -231,9 +235,9 @@
 
 		document.body.appendChild(圖);
 
-		setTimeout(function () {
+		定時限(function () {
 			圖.style.opacity = '0';
-			setTimeout(function () {
+			定時限(function () {
 				document.body.removeChild(圖);
 			}, 1000);
 		}, 2000);
@@ -283,7 +287,7 @@
 	// reset inactivity timer
 	function 復懈時計() {
 		clearTimeout(懈時計);
-		懈時計 = setTimeout(function () {
+		懈時計 = 定時限(function () {
 			顯警示('汝尚在乎？', '十息未動，速攝心。');
 			播隨機聲();
 		}, 10000);
