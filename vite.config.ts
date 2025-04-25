@@ -6,7 +6,8 @@ import wenyan from './wenyan-vite-plugin.ts'
 export default defineConfig({
 	plugins: [tailwindcss(), sveltekit(), wenyan({
 		// Passed straight to Wenyan's compile()
-		strict: true,
-		romanizeIdentifiers: 'pinyin'
+		strict: false,
+		romanizeIdentifiers: 'none',
+		importPaths: [process.cwd() + "/藏書樓"]
 	})]
 });

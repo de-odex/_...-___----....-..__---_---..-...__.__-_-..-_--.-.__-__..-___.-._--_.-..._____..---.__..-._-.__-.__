@@ -5,7 +5,11 @@ import wenyanPre from './svelte.wenyan-preprocess.js';
 const config = {
 	preprocess: [
 		vitePreprocess(),
-		wenyanPre({ strict: true, romanizeIdentifiers: 'pinyin' })
+		wenyanPre({
+			strict: false,
+			romanizeIdentifiers: 'none',
+			importPaths: [process.cwd() + "/藏書樓"]
+		})
 	],
 	kit: { adapter: adapter() }
 };

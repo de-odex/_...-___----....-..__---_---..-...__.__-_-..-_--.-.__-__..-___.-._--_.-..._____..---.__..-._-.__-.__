@@ -10,17 +10,11 @@ export default function wenyanPre(opts = {}) {
       if (attributes.lang !== '文言') return;
 
       // Wenyan to CJS
-      const { code } = compile(content, opts);
+      const code = compile(content, opts);
 
       // Turn CommonJS export into ESM, so Svelte can use it 
       return {
-        code: `
-					const module = { exports: {} };
-					${code}
-					const __exp = module.exports ?? {};
-					export default __exp;
-					export const { ...named } = __exp;
-				`,
+        code: code,
         map: null,
         attributes: { lang: 'js' }
       };
