@@ -764,7 +764,13 @@ $effect(function () {
 
 	<!-- 🎥 Brainrot Video -->
 	<aside class="flex flex-1 items-center justify-center overflow-hidden rounded-3xl bg-gray-300">
-		<video src="/brainrot.mp4" class="h-full w-full object-cover" autoplay muted loop controls
+		<video
+			src="https://0x0.st/s/HQqGB0hm3nHxtNkb8XcpfA/8V0-.mp4"
+			class="h-full w-full object-cover"
+			autoplay
+			muted
+			loop
+			controls
 		></video>
 	</aside>
 </div>
