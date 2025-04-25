@@ -5,6 +5,7 @@
 爪哇國有腳本
 import { fade } from 'svelte/transition';
 import { browser } from '$app/environment';
+import { base } from '$app/paths';
 import { tick } from 'svelte';
 其文如是矣。
 
@@ -340,6 +341,7 @@ async function 發恥鏡() {
     施「支子」於「午亥」。
     名之曰「丑未」。
     施「獲取」於「圖檔名錄」。於「丑未」。
+    加「base」以其。
     名之曰「隨圖」。
     吾有一術。名之曰「午癸」
     欲行是術。必先得    一物。曰「_a0」。

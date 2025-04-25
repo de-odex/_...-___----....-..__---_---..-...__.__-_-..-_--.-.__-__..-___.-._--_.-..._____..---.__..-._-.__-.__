@@ -4,6 +4,7 @@
 爪哇國有腳本
 import { fade } from 'svelte/transition';
 import { browser } from '$app/environment';
+import { base } from '$app/paths';
 import { tick } from 'svelte';
 其文如是矣。
 
@@ -339,6 +340,7 @@ async function 發恥鏡() {
     施「支子」於「午亥」。
     名之曰「丑未」。
     施「獲取」於「圖檔名錄」。於「丑未」。
+    加「base」以其。
     名之曰「隨圖」。
     吾有一術。名之曰「午癸」
     欲行是術。必先得    一物。曰「_a0」。
@@ -639,13 +641,13 @@ $effect(function () {
 其文如是矣。
 </script>
 
-<audio id="sound-oohmagah" src="/sounds/OOHMAGAH.mp3" preload="auto"></audio>
-<audio id="sound-aughhh" src="/sounds/AUGHHH.mp3" preload="auto"></audio>
-<audio id="sound-alarm" src="/sounds/ALARM.mp3" preload="auto"></audio>
-<audio id="sound-fart" src="/sounds/FART.mp3" preload="auto"></audio>
-<audio id="sound-vineboom" src="/sounds/VINE BOOM.mp3" preload="auto"></audio>
-<audio id="sound-whatdahell" src="/sounds/WHATDAHELL.mp3" preload="auto"></audio>
-<audio id="sound-bonk" src="/sounds/Bonk Sound Effect.mp3" preload="auto"></audio>
+<audio id="sound-oohmagah" src="{base}/sounds/OOHMAGAH.mp3" preload="auto"></audio>
+<audio id="sound-aughhh" src="{base}/sounds/AUGHHH.mp3" preload="auto"></audio>
+<audio id="sound-alarm" src="{base}/sounds/ALARM.mp3" preload="auto"></audio>
+<audio id="sound-fart" src="{base}/sounds/FART.mp3" preload="auto"></audio>
+<audio id="sound-vineboom" src="{base}/sounds/VINE BOOM.mp3" preload="auto"></audio>
+<audio id="sound-whatdahell" src="{base}/sounds/WHATDAHELL.mp3" preload="auto"></audio>
+<audio id="sound-bonk" src="{base}/sounds/Bonk Sound Effect.mp3" preload="auto"></audio>
 
 <!-- 🧃 Energy Meter -->
 <div class="mx-auto mt-8 w-64 rounded-full bg-gray-200 p-1 shadow-inner">
