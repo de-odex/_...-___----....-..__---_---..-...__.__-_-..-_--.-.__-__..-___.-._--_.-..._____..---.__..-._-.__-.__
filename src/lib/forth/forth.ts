@@ -1,9 +1,9 @@
 import { onMount } from 'svelte';
 
 import { browser } from '$app/environment';
-import WAForth, { withLineBuffer } from "waforth";
+import WAForth from "waforth";
 import tasksSrc from '$lib/forth/tasks.fth?raw';
-
+const { withLineBuffer } = WAForth
 
 export async function boot() {
   if (!browser) return;
