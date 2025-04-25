@@ -264,29 +264,29 @@
 
 <div class="relative">
 	<div
-		class="absolute top-12 left-1/2 z-10 flex w-[700px] -translate-x-1/2 items-center justify-between rounded-full bg-gray-200 px-4 py-2 shadow-md"
+		class="absolute top-12 left-1/2 z-10 flex w-[70%] -translate-x-1/2 items-center justify-between rounded-full bg-gray-200 px-4 py-2 shadow-md"
 	>
 		<input
-			class="flex-1 rounded-full border border-gray-400 bg-white px-4 py-2 text-lg font-semibold placeholder-gray-500 focus:outline-none"
+			class="flex-1 rounded-full border border-gray-400 bg-white px-4 py-2 font-semibold placeholder-gray-500 focus:outline-none"
 			placeholder="Buy milk..."
 			bind:value={temp}
 			on:keydown={(e) => e.key === 'Enter' && add()}
 		/>
 		<div class="ml-4 flex space-x-2">
-			<button class="rounded bg-gray-800 px-3 py-1 text-white hover:bg-gray-900" on:click={add}>
+			<button class="rounded-full bg-gray-800 px-3 py-1 text-white hover:bg-gray-900" on:click={add}>
 				Create Task
 			</button>
-			<button class="rounded bg-red-600 px-3 py-1 text-white hover:bg-red-700" on:click={clear}>
+			<button class="rounded-full bg-red-600 px-3 py-1 text-white hover:bg-red-700" on:click={clear}>
 				Delete All Tasks
 			</button>
 			<button
-				class="rounded bg-yellow-500 px-3 py-1 text-white hover:bg-yellow-600"
+				class="rounded-full bg-yellow-500 px-3 py-1 text-white hover:bg-yellow-600"
 				on:click={procrastinate}
 			>
 				Procrastinate
 			</button>
 			<button
-				class="rounded bg-purple-700 px-3 py-1 text-white hover:bg-purple-800"
+				class="rounded-full bg-purple-700 px-3 py-1 text-white hover:bg-purple-800"
 				on:click={rollDoomDice}
 			>
 				Dice of Doom 🎲
