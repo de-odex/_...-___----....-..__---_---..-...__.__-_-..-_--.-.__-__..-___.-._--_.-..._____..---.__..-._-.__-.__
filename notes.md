@@ -25,4 +25,4 @@ use this in the presentation
   - AI gen does not help with esoteric or old languages like forth lol
 - forth was getting difficult to do, so I pivoted to wenyan and entropy.js
 - Quoc implemented most of the frontend logic and the initial todo app logic, while I made the forth version of the backend
-- 
+- 讀文言，致我狂。

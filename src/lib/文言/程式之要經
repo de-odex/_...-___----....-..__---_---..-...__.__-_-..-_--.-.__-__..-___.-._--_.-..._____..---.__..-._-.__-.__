@@ -1,0 +1,13 @@
+注曰。「「此檔未用，僅備參考。」」。
+
+吾嘗觀「「腳本秘術」」之書。
+方悟「腳本秘術」之義。
+爪哇國有腳本
+import { fade } from 'svelte/transition';
+import { browser } from '$app/environment';
+import { tick } from 'svelte';
+其文如是矣。
+
+吾有一列。名之曰「todos」
+吾有一言。名之曰「todoInput」
+吾有一列。名之曰「alerts」
