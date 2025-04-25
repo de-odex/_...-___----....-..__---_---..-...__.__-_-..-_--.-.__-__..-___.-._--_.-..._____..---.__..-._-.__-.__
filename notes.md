@@ -26,3 +26,5 @@ use this in the presentation
 - forth was getting difficult to do, so I pivoted to wenyan and entropy.js
 - Quoc implemented most of the frontend logic and the initial todo app logic, while I made the forth version of the backend
 - 讀文言，致我狂。
+- im not actually sure if this is accurate classical/literary chinese
+- the code was a massive pain to get working

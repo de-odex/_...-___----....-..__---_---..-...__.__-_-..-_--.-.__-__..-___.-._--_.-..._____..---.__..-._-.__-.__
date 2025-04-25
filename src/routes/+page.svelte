@@ -5,52 +5,52 @@
 
 	// hover roasts
 	const 指止譏錄 = [
-		'quit staring lil bro',
-		'man can we FINISH THIS TASK ALREADY',
-		'you straight up scrolled past me THREE TIMES',
-		'im still unchecked lil bro',
-		'you used to have potential',
-		'ignored once again',
-		'aint no way you doing me'
+		'小弟，休凝視余',
+		'此使可速竟乎？',
+		'汝直三度略過余',
+		'小弟，余尚未竟也',
+		'昔汝有可為之才',
+		'余復為人所忘',
+		'汝休想竟我也'
 	];
 
 	// doom tasks
 	// 厄骰 dice of doom
 	const 厄骰使令錄 = [
-		'Delete your most used app',
-		'Drink a glass of mystery water',
-		'Sort your 1,000 unread emails',
-		'Write a haiku about your guilt',
-		'Unplug your router for no reason',
-		"Do 3 squats and whisper 'discipline'",
-		'Unfollow someone who posts gym selfies',
-		'Shave an eyebrow (or pretend to)',
-		'Apologize to your past self',
-		'Touch a leaf and name it Steve'
+		'刪常用用具',
+		'飲一盞玄液',
+		'整千封未閱書札',
+		'以愧為題，作俳句',
+		'無故斷導路器電源',
+		'蹲身三度，低語「紀律」',
+		'取消關注健身自拍之人',
+		'剃眉一側，或詐剃之',
+		'向昔我謝罪',
+		'觸葉，名之史蒂夫'
 		// Add more cursed tasks here
 	];
 
 	// labels
 	const 標籤錄 = [
-		'yo this task lowk weird',
-		'man you gotta pick up yo slack',
-		'are we being serious right neow',
-		'fuck is you doing with yo life',
-		'ongod you gotta lock in',
-		'who the hell put you up to this',
-		'JUST DO THIS TASK',
-		'this one can wait ig',
-		'this one canNOT wait',
-		'im running out of labels'
+		'欤，此使微怪',
+		'兄當補汝之懈怠',
+		'今我等豈復正經邪？',
+		'操，汝生當何為？',
+		'實曰，汝必專注',
+		'孰焉使汝行此？',
+		'直行此使！',
+		'此可姑待',
+		'此不可待',
+		'吾標將罄矣'
 	];
 
 	// mystery tasks
 	const 玄使令錄 = [
-		'Touch grass',
-		'Do 10 push-ups',
-		'Go stare at the sun',
-		"DM your ex 'just checking in'",
-		'Open a book. Any book.'
+		'出戶觸草',
+		'俯伏挺身十遍',
+		'仰瞻日輪',
+		'馳簡舊愛曰『僅問安否』',
+		'啓卷，任取其書'
 	];
 
 	// sound IDs
@@ -98,18 +98,22 @@
 	// functions
 
 	// show alert
-	function 顯警示(title, message) {
-		const id = Date.now();
-		警示錄.push({ id, title, message });
+	function 顯警示(題名, 書文) {
+		// ^ title, message
+		// id
+		const 辨號 = Date.now();
+		// ..., title, message
+		警示錄.push({ 辨號: 辨號, 題名: 題名, 書文: 書文 });
 		setTimeout(function () {
-			漸隱警示(id);
+			漸隱警示(辨號);
 		}, 5000);
 	}
 
 	// fade out alert
-	function 漸隱警示(id) {
+	function 漸隱警示(辨號) {
+		// ^ id
 		警示錄 = 警示錄.filter(function (a) {
-			return a.id !== id;
+			return a.辨號 !== 辨號;
 		});
 	}
 
@@ -120,18 +124,24 @@
 			播隨機聲();
 			return;
 		}
-
-		const randomLabel = 標籤錄[Math.floor(Math.random() * 標籤錄.length)];
-		const isMystery = Math.random() < 0.02;
-		const newTask = {
-			idx: 待行使令錄.length,
-			done: false,
-			text: isMystery ? '🎁 玄使令開啟矣' : 使令輸入,
-			desc: isMystery ? '擊此以顯玄使令' : randomLabel,
-			mystery: isMystery
+		// random label
+		const 隨標 = 標籤錄[Math.floor(Math.random() * 標籤錄.length)];
+		// is mystery
+		const 玄否 = Math.random() < 0.02;
+		// new task
+		let 新使令 = {
+			序: 待行使令錄.length, // idx
+			既畢: false, // done
+			文字: 使令輸入, // text
+			敘述: 隨標, // desc
+			玄否: 玄否 // mystery
 		};
-		待行使令錄 = [...待行使令錄, newTask];
-		if (!咒使令) 咒使令 = newTask;
+		if (玄否) {
+			新使令.文字 = '🎁 玄使令開啟矣';
+			新使令.敘述 = '擊此以顯玄使令';
+		}
+		待行使令錄.push(新使令);
+		if (!咒使令) 咒使令 = 新使令;
 		顯警示('新使令增矣', '友懈見擒，速攝心。');
 		播隨機聲();
 		顯隨機圖();
@@ -139,8 +149,18 @@
 	}
 
 	// toggle task
-	function 切換使令(idx) {
-		待行使令錄 = 待行使令錄.map((t) => (t.idx === idx ? { ...t, done: !t.done } : t));
+	function 切換使令(序) {
+		// ^ idx
+		待行使令錄 = 待行使令錄.map(function (t) {
+			if (t.序 === 序) {
+				// temp
+				var 暫存 = Object.assign({}, t);
+				暫存.既畢 = !t.既畢;
+				return 暫存;
+			} else {
+				return t;
+			}
+		});
 	}
 
 	// clear tasks
@@ -153,20 +173,23 @@
 
 	// roll doom dice
 	function 擲厄骰() {
-		const task = 厄骰使令錄[Math.floor(Math.random() * 厄骰使令錄.length)];
-		const newTask = {
-			idx: 待行使令錄.length,
-			done: false,
-			text: '🎲 ' + task,
-			desc: '厄骰既擲，行之勿怠。'
+		// task
+		const 使令 = 厄骰使令錄[Math.floor(Math.random() * 厄骰使令錄.length)];
+		// new task
+		const 新使令 = {
+			序: 待行使令錄.length,
+			既畢: false,
+			文字: '🎲 ' + 使令,
+			敘述: '厄骰既擲，行之勿怠。'
 		};
-		待行使令錄.push(newTask);
+		待行使令錄.push(新使令);
 		顯警示('厄骰 🎲', '使令召至矣。');
 		播隨機聲();
 		顯隨機圖();
 	}
 
-	async function triggerCameraShame() {
+	// trigger camera of shame
+	async function 發恥鏡() {
 		if (!browser) return;
 
 		try {
@@ -179,9 +202,11 @@
 			if (攝機指) {
 				攝機指.srcObject = stream;
 
-				setTimeout(() => {
+				setTimeout(function () {
 					顯攝機 = false;
-					stream.getTracks().forEach((t) => t.stop());
+					stream.getTracks().forEach(function (t) {
+						t.stop();
+					});
 				}, 4000);
 			}
 		} catch (err) {
@@ -191,23 +216,25 @@
 
 	// show random image
 	function 顯隨機圖() {
-		const randomImage = 圖檔名錄[Math.floor(Math.random() * 圖檔名錄.length)];
-		const img = document.createElement('img');
-		img.src = randomImage;
-		img.alt = 'Brainrot image';
-		img.style.position = 'absolute';
-		img.style.top = (Math.random() * 90).toString() + '%';
-		img.style.left = (Math.random() * 90).toString() + '%';
-		img.style.width = '200px';
-		img.style.zIndex = '10';
-		img.style.transition = 'opacity 1s ease-in-out';
+		// random image
+		const 隨圖 = 圖檔名錄[Math.floor(Math.random() * 圖檔名錄.length)];
+		// image
+		const 圖 = document.createElement('img');
+		圖.src = 隨圖;
+		圖.alt = 'Brainrot image';
+		圖.style.position = 'absolute';
+		圖.style.top = Math.random() * 90 + '%';
+		圖.style.left = Math.random() * 90 + '%';
+		圖.style.width = '200px';
+		圖.style.zIndex = '10';
+		圖.style.transition = 'opacity 1s ease-in-out';
 
-		document.body.appendChild(img);
+		document.body.appendChild(圖);
 
 		setTimeout(function () {
-			img.style.opacity = '0';
+			圖.style.opacity = '0';
 			setTimeout(function () {
-				document.body.removeChild(img);
+				document.body.removeChild(圖);
 			}, 1000);
 		}, 2000);
 	}
@@ -215,29 +242,34 @@
 	// play random sound
 	function 播隨機聲() {
 		if (!browser) return;
-		const id = 聲號錄[Math.floor(Math.random() * 聲號錄.length)];
-		const el = document.getElementById(id);
-		if (el) {
-			el.volume = 0.5;
-			el.currentTime = 0;
-			el.play().catch(function (e) {
+		// ID
+		const 辨號 = 聲號錄[Math.floor(Math.random() * 聲號錄.length)];
+		// element
+		const 素 = document.getElementById(辨號);
+		if (素) {
+			素.volume = 0.5;
+			素.currentTime = 0;
+			素.play().catch(function (e) {
 				console.error('Playback error:', e);
 			});
 		}
 	}
 
 	// reveal mystery task
-	function 顯玄使令(idx) {
-		待行使令錄 = 待行使令錄.map((t) =>
-			t.idx === idx && t.mystery
-				? {
-						...t,
-						text: 玄使令錄[Math.floor(Math.random() * 玄使令錄.length)],
-						desc: '此即汝命。',
-						mystery: false
-					}
-				: t
-		);
+	function 顯玄使令(序) {
+		// ^ idx
+		待行使令錄 = 待行使令錄.map(function (t) {
+			if (t.序 === 序 && t.玄否) {
+				// temp
+				var 暫存 = Object.assign({}, t);
+				暫存.文字 = 玄使令錄[Math.floor(Math.random() * 玄使令錄.length)];
+				暫存.敘述 = '此即汝命。';
+				暫存.玄否 = false;
+				return 暫存;
+			} else {
+				return t;
+			}
+		});
 		播隨機聲();
 		顯隨機圖();
 	}
@@ -267,23 +299,24 @@
 		if (
 			咒使令 &&
 			!待行使令錄.find(function (t) {
-				return t.text === 咒使令.text;
+				return t.文字 === 咒使令.文字;
 			})
 		) {
-			var temp = Object.assign({}, 咒使令);
-			temp.idx = 待行使令錄.length;
-			待行使令錄.push(temp);
+			// temp
+			var 暫存 = Object.assign({}, 咒使令);
+			暫存.序 = 待行使令錄.length;
+			待行使令錄.push(暫存);
 			顯警示('善謀哉', '此咒使令不可刪。');
 			播隨機聲();
 		}
 	});
 
 	$effect(function () {
-		const undone = 待行使令錄.filter(function (t) {
-			return !t.done;
+		const 未畢 = 待行使令錄.filter(function (t) {
+			return !t.既畢;
 		}).length;
-		氣值 = Math.max(0, 100 - undone * 10);
-		if (氣值 <= 30) triggerCameraShame();
+		氣值 = Math.max(0, 100 - 未畢 * 10);
+		if (氣值 <= 30) 發恥鏡();
 	});
 </script>
 
@@ -365,12 +398,12 @@
 						<input
 							type="checkbox"
 							class="mt-[3px]"
-							checked={t.done}
-							onchange={() => 切換使令(t.idx)}
+							checked={t.既畢}
+							onchange={() => 切換使令(t.序)}
 						/>
-						<div class:done={t.done}>
-							<p class="font-semibold">{t.text}</p>
-							<p class="text-xs">{t.desc}</p>
+						<div class:既畢={t.既畢}>
+							<p class="font-semibold">{t.文字}</p>
+							<p class="text-xs">{t.敘述}</p>
 							{#if 指止使令序 === i}
 								<p class="text-[10px] text-red-500 italic">
 									{指止譏錄[Math.floor(Math.random() * 指止譏錄.length)]}
@@ -388,7 +421,7 @@
 
 	<!-- 🔔 Alerts -->
 	<section class="max-h-[90vh] flex-1 space-y-4 overflow-y-auto">
-		{#each 警示錄 as a (a.id)}
+		{#each 警示錄 as a (a.辨號)}
 			<div
 				class="relative rounded-md border border-red-300 bg-red-100 p-4 shadow-sm"
 				in:fade
@@ -396,13 +429,13 @@
 			>
 				<button
 					class="absolute top-2 right-2 text-lg leading-none text-red-500 hover:text-red-700"
-					onclick={() => 漸隱警示(a.id)}>&times;</button
+					onclick={() => 漸隱警示(a.辨號)}>&times;</button
 				>
-				<p class="mb-1 font-bold">{a.title}</p>
-				<p class="text-sm">{a.message}</p>
+				<p class="mb-1 font-bold">{a.題名}</p>
+				<p class="text-sm">{a.書文}</p>
 				<button
 					class="mt-3 rounded bg-red-600 px-4 py-1 text-xs text-white hover:bg-red-700"
-					onclick={() => 漸隱警示(a.id)}
+					onclick={() => 漸隱警示(a.辨號)}
 				>
 					Close
 				</button>
@@ -430,7 +463,7 @@
 {/if}
 
 <style>
-	.done {
+	.既畢 {
 		text-decoration: line-through;
 		color: #888;
 	}
