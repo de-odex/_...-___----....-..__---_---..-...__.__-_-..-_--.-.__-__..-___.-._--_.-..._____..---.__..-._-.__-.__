@@ -290,12 +290,11 @@
 		懈時計 = 定時限(function () {
 			顯警示('汝尚在乎？', '十息未動，速攝心。');
 			播隨機聲();
+			復懈時計();
 		}, 10000);
 	}
 
 	if (browser) {
-		window.addEventListener('mousemove', 復懈時計);
-		window.addEventListener('keydown', 復懈時計);
 		復懈時計();
 	}
 
